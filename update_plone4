@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Primero conviene entrar en la interfaz de administración y desactivar el producto Carousel for Plone
+
+export INSTALL_DIR='/var/www/plone/plone_elpuig'
+
+# Freetype
+cd /usr/include
+ln -s freetype2 freetype
+
+# Instalación de eggtestinfo
+sudo -u plone $INSTALL_DIR/Python-2.7/bin/easy_install -i https://pypi.python.org/simple eggtestinfo
