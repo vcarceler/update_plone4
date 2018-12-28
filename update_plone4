@@ -10,3 +10,16 @@ ln -s freetype2 freetype
 
 # Instalación de eggtestinfo
 sudo -u plone $INSTALL_DIR/Python-2.7/bin/easy_install -i https://pypi.python.org/simple eggtestinfo
+
+# Cambios en buildout
+cd $INSTALL_DIR/zeocluster
+sed '30a index = https://pypi.python.org/simple/' buildout.cfg | sed '86d' >buildout.cfg.NEW
+mv buildout.cfg buildout.cfg.OLD
+cp buildout.cfg.NEW buildout.cfg
+
+# Apagado del servidor
+/etc/init.d/plone stop
+
+# Ejecución del buildout
+time sudo -u plone /var/www/plone/plone_elpuig/zeocluster/bin/buildout
+
