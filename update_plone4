@@ -23,7 +23,11 @@ cp buildout.cfg.NEW buildout.cfg
 # Ejecución del buildout
 time sudo -u plone /var/www/plone/plone_elpuig/zeocluster/bin/buildout
 
+# Enciende el servidor
+/etc/init.d/plone start
+sleep 20
 
 # Creación del usuario admin2 para actualizar en la interfaz web zmi
 sudo -u plone /var/www/plone/plone_elpuig/zeocluster/bin/client2 adduser admin2 admin2
 
+echo "Ve a la interfaz zmi y utiliza admin2/admin2 para actualizar el sitio"
