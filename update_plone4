@@ -11,7 +11,7 @@ ln -s freetype2 freetype
 # Instalación de eggtestinfo
 sudo -u plone $INSTALL_DIR/Python-2.7/bin/easy_install -i https://pypi.python.org/simple eggtestinfo
 
-# Cambios en buildout
+# Cambios en buildout, añade index = ... y borra el carousel
 cd $INSTALL_DIR/zeocluster
 sed '30a index = https://pypi.python.org/simple/' buildout.cfg | sed '86d' >buildout.cfg.NEW
 mv buildout.cfg buildout.cfg.OLD
@@ -22,4 +22,8 @@ cp buildout.cfg.NEW buildout.cfg
 
 # Ejecución del buildout
 time sudo -u plone /var/www/plone/plone_elpuig/zeocluster/bin/buildout
+
+
+# Creación del usuario admin2 para actualizar en la interfaz web zmi
+sudo -u plone /var/www/plone/plone_elpuig/zeocluster/bin/client2 adduser admin2 admin2
 
